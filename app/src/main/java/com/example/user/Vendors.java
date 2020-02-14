@@ -1,6 +1,5 @@
 package com.example.user;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,6 +22,7 @@ public class Vendors extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     List<Map<String,String>> vendors;
+    String customerId = "customerId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class Vendors extends AppCompatActivity {
     }
 
     private void initFirebaseVendors() {
-        database.getReference("ritik/vendors").addValueEventListener(new ValueEventListener() {
+        database.getReference("ritik/customer_app/"+customerId+"/vendors_av").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 vendors.clear();
